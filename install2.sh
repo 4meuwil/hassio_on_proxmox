@@ -35,6 +35,10 @@ with open('/etc/pve/.vmlist') as vmlist:
     vmids = json.load(vmlist)
 if 'ids' not in vmids:
     print(100)
+if '101' not in vmids:
+    print(101)
+if '102' not in vmids:
+    print(102)
 else:
     last_vm = sorted(vmids['ids'].keys())[-1:][0]
     print(int(last_vm)+1)
@@ -88,7 +92,7 @@ qm create $VMID -bios ovmf -name $(sed -e "s/\_//g" -e "s/.vdi.gz//" <<< $FILE) 
 pvesm alloc $STORAGE $VMID $DISK0 128 1>&/dev/null
 qm importdisk $VMID ${FILE%".gz"} $STORAGE $IMPORT_OPT 1>&/dev/null
 qm set $VMID -bootdisk sata0 -efidisk0 ${DISK0_REF},size=128K \
-    -sata0 ${DISK1_REF},size=6G > /dev/null
+    -sata0 ${DISK1_REF},size=75G > /dev/null
 echo -e "\n\n\n" \
     "********************************\n" \
     "*    Completed Successfully    *\n" \
