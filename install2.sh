@@ -43,6 +43,8 @@ elif '103' not in (vmids['ids']):
     print(103)
 elif '104' not in (vmids['ids']):
     print(104)
+elif '105' not in (vmids['ids']):
+    print(105)
 else:
     last_vm = sorted(vmids['ids'].keys())[-1:][0]
     print(int(last_vm)+1)
